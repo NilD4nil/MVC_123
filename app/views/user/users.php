@@ -38,7 +38,7 @@ use app\lib\UserOperations;
                                                 <a href="/user/delete/?user_id=<?=$user['id']?>">Удалить</a>)
                                         </h3>
                                         <div class="user-login">Имя: <?=$user['login']?></div>
-                                        <div class="user-is_admin">Являеться администратором: <?=($user['is_admin'] === '1') ? 'Да' : 'Нет'?></div>
+                                        <div class="user-is_admin">Является администратором: <?=($user['is_admin'] === '1') ? 'Да' : 'Нет'?></div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

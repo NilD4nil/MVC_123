@@ -20,8 +20,14 @@ class UserController extends InitController
                         'matchCallback' => function () {
                             $this->redirect('/user/profile');
                         }
+                    ],
+                    [
+                        'actions' => ['users'],
+                        'roles' => [UserOperations::RoleAdmin],
+                        'matchCallback' => function () {
+                            $this->redirect('/user/profile');
+                        }
                     ]
-                    ['actions']
                 ]
             ]
         ];
@@ -118,13 +124,15 @@ class UserController extends InitController
         $this->render('profile', ['sidebar' => UserOperations::getMenuLinks(),
             'error_message' => $error_message]);
     }
-    public function actionUsers(){
-        $this -> view -> title = 'Пользователи';
+
+    public function actionUsers()
+    {
+        $this->view->title = 'Пользователи';
 
         $user_model = new usersModel();
-        $users = $user_model -> getListUsers();
+        $users = $user_model->getListUsers();
 
-        $this -> render('users',[
+        $this->render('users', [
             'sidebar' => UserOperations::getMenuLinks(),
             'users' => $users,
             'role' => UserOperations::getRoleUser(),

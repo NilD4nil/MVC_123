@@ -1,8 +1,8 @@
 <?php
 return [
     'provider' => 'pgsql',
-    'hostname' => 'localhost',
-    'database' => 'fs07001',
-    'username' => 'postgres',
-    'password' => ''
+    'hostname' => '194.190.152.134',
+    'database' => 'databaseone',
+    'username' => 'danmot',
+    'password' => 'phprojectPass0205'
 ];

@@ -15,7 +15,7 @@
              $error_message .= 'Введите наименование!<br>';
          }
          if (empty($news_data['short_description'])) {
-             $error_message .= 'Введиет краткое содержание!<br>';
+             $error_message .= 'Введите краткое содержание!<br>';
          }
          if (empty($news_data['description'])) {
              $error_message .= 'Введите описание!<br>';
@@ -46,30 +46,20 @@
          }
          return $result;
      }
-     public function edit($news_id, $news_data){
+     public function edit($title, $cover, $type, $message, $session_id){
          $result = false;
          $error_message = '';
 
-         if(empty($news_id)){
-             $error_message .= 'Отсутствует идентификатор записи!<br>';
-         }
-         if(empty($news_data['title'])) {
-             $error_message .='Введите наименование!<br>';
-         }
-         if(empty($news_data['short_description'])) {
-             $error_message .='Введите краткое описание!<br>';
-         }
-         if(empty($news_data['description'])) {
-             $error_message .='Введите описание!<br>';
-         }
          if(empty($error_message)){
              $result = $this -> update(
                  'UPDATE news SET title = :title, short_description = :short_description,
                 description = :description where id =:id',[
-                    'title' => $news_data['title'],
-                    'short_description' => $news_data['short_description'],
-                    'description' => $news_data['description'],
-                    'id' => $news_id,
+                    'title' => $title,
+                    'short_description' => $message,     #НЕ ЗАБУДЬ ТАБЛИЦУ NEWS!!!!!!!!!!!!
+                    'description' => $message,
+                    'id' => $session_id,
+                    'cover' => $cover,
+                    'type' => $type
                  ]
              );
          }
@@ -107,4 +97,6 @@
              'error_message' => $error_message
          ];
      }
+
+     public function addingtheme(){}
  }
